@@ -1,4 +1,4 @@
-import CreateDataContext from "./CreateDataContext";
+import createDataContext from "./createDataContext";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -9,11 +9,13 @@ const reducer = (state, action) => {
   }
 };
 
-const addBlog = () => {
-  dispatch({ type: "add_blog" });
+const addBlog = (dispatch) => {
+  return () => {
+    dispatch({ type: "add_blog" });
+  };
 };
 
-export const { Context, Provider } = CreateDataContext(
+export const { Context, Provider } = createDataContext(
   reducer,
   { addBlog },
   []
