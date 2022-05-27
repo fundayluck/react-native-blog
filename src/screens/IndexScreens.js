@@ -11,7 +11,7 @@ import { Context } from "../context/BlogContext";
 import { AntDesign } from "@expo/vector-icons";
 
 const IndexScreens = () => {
-  const { state, addBlog } = useContext(Context);
+  const { state, addBlog, deleteBlog } = useContext(Context);
 
   return (
     <View>
@@ -25,7 +25,7 @@ const IndexScreens = () => {
               <Text style={styles.title}>
                 {item.title} - {item.id}
               </Text>
-              <TouchableOpacity onPress={() => console.log(item.id)}>
+              <TouchableOpacity onPress={() => deleteBlog(item.id)}>
                 <AntDesign style={styles.icons} name="delete" />
               </TouchableOpacity>
             </View>
