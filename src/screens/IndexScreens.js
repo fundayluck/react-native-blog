@@ -40,6 +40,16 @@ const IndexScreens = ({ navigation }) => {
   );
 };
 
+IndexScreens.navigationOptions = ({ navigation }) => {
+  return {
+    headerRight: () => (
+      <TouchableOpacity onPress={() => navigation.navigate("Create")}>
+        <AntDesign name="pluscircleo" size={30} />
+      </TouchableOpacity>
+    ),
+  };
+};
+
 const styles = StyleSheet.create({
   row: {
     flexDirection: "row",
