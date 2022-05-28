@@ -11,11 +11,10 @@ import { Context } from "../context/BlogContext";
 import { AntDesign } from "@expo/vector-icons";
 
 const IndexScreens = ({ navigation }) => {
-  const { state, addBlog, deleteBlog } = useContext(Context);
+  const { state, deleteBlog } = useContext(Context);
 
   return (
     <View>
-      <Button title="Add Blog" onPress={addBlog} />
       <FlatList
         data={state}
         keyExtractor={(blogs) => blogs.title}
