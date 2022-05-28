@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
     borderColor: "black",
     marginHorizontal: 5,
     marginBottom: 15,
+    padding: 5,
   },
   label: {
     fontSize: 20,
