@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -11,7 +11,11 @@ import { Context } from "../context/BlogContext";
 import { AntDesign } from "@expo/vector-icons";
 
 const IndexScreens = ({ navigation }) => {
-  const { state, deleteBlog } = useContext(Context);
+  const { state, deleteBlog, getBlog } = useContext(Context);
+
+  useEffect(() => {
+    getBlog();
+  }, []);
 
   return (
     <View>
