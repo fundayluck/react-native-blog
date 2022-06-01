@@ -1,7 +1,10 @@
 import createDataContext from "./createDataContext";
+import jsonServer from "../api/jsonServer";
 
 const reducer = (state, action) => {
   switch (action.type) {
+    case "get_blog":
+      return action.payload;
     case "edit_blog":
       return state.map((blogPost) => {
         return blogPost.id === action.payload.id ? action.payload : blogPost;
@@ -20,6 +23,14 @@ const reducer = (state, action) => {
     default:
       return state;
   }
+};
+
+const getBlog = (dispatch) => {
+  return async () => {
+    const response = await jsonServer.get("/blogposts");
+
+    dispatch({ type: "get_blog", payload: response.data });
+  };
 };
 
 const addBlog = (dispatch) => {
@@ -48,6 +59,6 @@ const editBlog = (dispatch) => {
 
 export const { Context, Provider } = createDataContext(
   reducer,
-  { addBlog, deleteBlog, editBlog },
+  { addBlog, deleteBlog, editBlog, getBlog },
   [{ title: "Blog Post 1", content: "This is the first blog post!", id: 1 }]
 );
