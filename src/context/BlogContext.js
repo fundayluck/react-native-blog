@@ -34,8 +34,9 @@ const getBlog = (dispatch) => {
 };
 
 const addBlog = (dispatch) => {
-  return (title, content, callback) => {
-    dispatch({ type: "add_blog", payload: { title, content } });
+  return async (title, content, callback) => {
+    const response = await jsonServer.post("/blogposts", { title, content });
+    // dispatch({ type: "add_blog", payload: { title, content } });
     if (callback) {
       callback();
     }
