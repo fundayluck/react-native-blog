@@ -4,7 +4,6 @@ import {
   Text,
   StyleSheet,
   FlatList,
-  Button,
   TouchableOpacity,
 } from "react-native";
 import { Context } from "../context/BlogContext";
@@ -15,6 +14,14 @@ const IndexScreens = ({ navigation }) => {
 
   useEffect(() => {
     getBlog();
+
+    const listener = navigation.addListener("didFocus", () => {
+      getBlog();
+    });
+
+    return () => {
+      listener.remove();
+    };
   }, []);
 
   return (
